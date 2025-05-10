@@ -13,7 +13,7 @@ export const addProduct=asyncHandler(async (req,res)=>{
     }
     const product=await prisma.products.create({
         data:{
-            name,
+            name, 
             description,
             categoryId,
             price,
@@ -26,6 +26,7 @@ export const addProduct=asyncHandler(async (req,res)=>{
     res.status(200).json({success:true,message:'product created successfully'})
    
 })
+
 export const getAllProduct=asyncHandler(async (req,res)=>{
  const  {page = 1,limit = 10,categoryId ,sort='desc'} = req.query;
  if(categoryId){
@@ -73,6 +74,7 @@ export const getAllProduct=asyncHandler(async (req,res)=>{
     res.status(200).json({success:true,message:`products fetched successfully`,data:{products,totalProducts}});
    
 })
+
 export const getAProduct=asyncHandler(async (req,res)=>{
     const {id}=req.params;
     if(!id){
@@ -92,6 +94,7 @@ export const getAProduct=asyncHandler(async (req,res)=>{
     res.status(200).json({success:true,message:`product fetched successfully`,data:rest});
    
 })
+
 export const updateAProduct=asyncHandler(async (req,res)=>{
     const {name,description,price,quantity,categoryId}=req.body;
     const {id}=req.params;
@@ -115,6 +118,7 @@ export const updateAProduct=asyncHandler(async (req,res)=>{
     res.status(200).json({success:true,message:`product updated successfully`});
    
 })
+
 export const deletAProduct=asyncHandler(async (req,res)=>{
     const {id}=req.params;
     if(!id){
